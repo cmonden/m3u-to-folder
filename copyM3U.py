@@ -21,7 +21,7 @@ missingLoc = baseLoc + "/missing_songs"
 m3ufile = "/Users/chadmonden/Dropbox/music/MOVE_Crates/" + m3ufile
 ExportFiles = "/Volumes/SideSpinMob/Crates"
 #SearchLocation = "E://Temp"
-SearchLocation ="/Volumes/XFer/My Music"
+SearchLocation ="/Volumes/XFer/AllMusic"
 DestinationStr = ''
 
 
@@ -148,8 +148,8 @@ def ChooseFileForCopy(inFileName):
 def WritetoErrorFile(FileName, m3ufile):
     global missingFiles
     missingFiles =  m3ufile + ".err"
-    WriteErrs = open(missingFiles, 'w') 
-    WriteErrs.writelines(FileName)
+    WriteErrs = open(missingFiles, 'a') 
+    WriteErrs.writelines(FileName + "\n")
     WriteErrs.close
 
 def MP3toFolder():
@@ -444,7 +444,9 @@ def FlushtoExport():
 	counter = 1
 	for mp3file in GlobalOutFileList:
 		FileNameStr = mp3file[0]
-		PositionInt = mp3file[1]		
+		PositionInt = mp3file[1]
+		MusicFileNameOnly = os.path.basename(FileNameStr)		
+		print("...Writing " + MusicFileNameOnly + " to " +  NameOnly)
 		CopyToExportFolder(FileNameStr, PositionInt)
 		counter = counter + 1
 	print("Songs written to playlist " + m3ufile + ": " + str(counter))	
