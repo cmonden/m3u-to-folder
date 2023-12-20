@@ -14,15 +14,16 @@ if len(sys.argv) > 1:
 	m3ufile = sys.argv[2]
 	DoDeepSearch = sys.argv[1]
 else:
-	m3ufile = '01 Urban Party.m3u'
+	m3ufile = 'Running.m3u8'
+	DoDeepSearch = "0"
 
-baseLoc = "/Volumes/SideSpinMob/SS" 
+baseLoc = "/Users/chadmonden/Music/SS/BACKPACK" 
 missingLoc = baseLoc + "/missing_songs"
-m3ufile = "/Users/chadmonden/Dropbox/music/MOVE_Crates/" + m3ufile
-ExportFiles = "/Volumes/SideSpinMob/Crates"
+m3ufile = "/Users/chadmonden/Music/SS/IMPORTS/" + m3ufile
+ExportFiles = "/Users/chadmonden/Music/__DOWNLOADS"
 #SearchLocation = "E://Temp"
-SearchLocation ="/Volumes/XFer/AllMusic"
-DestinationStr = ''
+SearchLocation ="/Users/chadmonden/Music/SS/BACKPACK"
+DestinationStr = ExportFiles
 
 
 def FixSlashes(inFileName):
@@ -449,7 +450,7 @@ def FlushtoExport():
 		print("...Writing " + MusicFileNameOnly + " to " +  NameOnly)
 		CopyToExportFolder(FileNameStr, PositionInt)
 		counter = counter + 1
-	print("Songs written to playlist " + m3ufile + ": " + str(counter))	
+	print("Songs written from playlist " + m3ufile + ": " + str(counter))	
 
 def FlushtoErrFile():
 	global GlobalSearchQueue
